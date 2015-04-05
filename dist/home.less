@@ -5,14 +5,14 @@
 /// @argument {Rule}  @callback  Calls the content of the loop
 
 .each(@list, @callback) when (default()) {
-  .each-impl_(@i, @callback) when (@i > 1) {
-    .each-impl_((@i - 1), @callback)
+  .return(@i, @callback) when (@i > 1) {
+    .return((@i - 1), @callback)
   }
-  .each-impl_(@i, @callback) {
+  .return(@i, @callback) {
     @callback();
     .callback(extract(@list, @i));
   }
-  .each-impl_(length(@list), @callback);
+  .return(length(@list), @callback);
 }
 
 
