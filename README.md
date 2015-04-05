@@ -4,6 +4,7 @@
 
 homeless is a library that provides helpful functions for "Less" (Less.js)
 
+deeply inspired by [more-or-less](https://github.com/pixelass/more-or-less)
 
 ## Examples
 
