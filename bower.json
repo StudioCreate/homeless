@@ -1,0 +1,16 @@
+{
+  "name": "homeless",
+  "version": "0.0.0",
+  "homepage": "http://pixelass.github.io/homeless/",
+  "authors": [
+    "Gregor Adams <greg@pixelass.com>"
+  ],
+  "description": "helpers for \"Less\" (fortunate) developers",
+  "main": "Gruntfile.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ]
+}

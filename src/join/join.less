@@ -1,0 +1,22 @@
+/// @name join
+/// @description
+///   repeat a string with an optional glue
+/// @argument {String} @list  the list to join
+/// @argument {String} @glue  string to use as a glue (optional)
+
+.join(...) {}
+.join(@list) {
+  .join(@list, '');
+}
+.join(@list, @glue) {
+  .join(@string, @list, @glue, @n) when (@n >= 0) {
+    .-return(@result, @n2) when (@n2 = 0) {
+      @return: ~'@{result}';
+    }
+    .-return(@string, @n);
+    @add: extract(@list, @n);
+    .join('@{add}@{glue}@{string}', @list, @glue, (@n - 1));
+  }
+  @last: extract(@list, length(@list));
+  .join(@last, @list, @glue, (length(@list) - 1));
+}

@@ -1,0 +1,17 @@
+@import 'join';
+
+&{
+  @list: a, b, c, d, e, f, g;
+  .join(@list);
+  .test {
+    test: @return;
+  }
+}
+
+&{
+  @list: a, b, c, d, e, f, g;
+  .join(@list, ', ');
+  .test {
+    test: @return;
+  }
+}

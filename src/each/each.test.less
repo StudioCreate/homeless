@@ -1,0 +1,9 @@
+@import 'each';
+
+@list: 'a', 'b', 'c';
+
+.each(@list, {.callback(@item) {
+  .@{item} {
+    item: @item;
+  }
+}});

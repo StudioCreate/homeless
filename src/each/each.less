@@ -1,0 +1,16 @@
+/// @name each
+/// @description
+///   provides each loops
+/// @argument {Array} @list      List to iterate
+/// @argument {Rule}  @callback  Calls the content of the loop
+
+.each(@list, @callback) when (default()) {
+  .each-impl_(length(@list), @callback);
+}
+.each-impl_(@i, @callback) when (@i > 1) {
+  .each-impl_((@i - 1), @callback)
+}
+.each-impl_(@i, @callback) {
+  @callback();
+  .callback(extract(@list, @i));
+}
