@@ -1,94 +1,94 @@
 @import 'if';
 
 .if(isnumber(2), {
-    .then(){
-        test {
-            bool: "pass";
-        }
+  .then(){
+    test {
+      bool: "pass";
     }
-    .else(){
-        test {
-            bool: "fail";
-        }
+  }
+  .else(){
+    test {
+      bool: "fail";
     }
+  }
 });
 
 .if(true, {
-    .then(){
-        test {
-            bool: "pass";
-        }
+  .then(){
+    test {
+      bool: "pass";
     }
-    .else(){
-        test {
-            bool: "fail";
-        }
+  }
+  .else(){
+    test {
+      bool: "fail";
     }
+  }
 });
 
 .if(false, {
-    .then(){
-        test {
-            bool: "fail";
-        }
+  .then(){
+    test {
+      bool: "fail";
     }
-    .else(){
-        test {
-            bool: "pass";
-        }
+  }
+  .else(){
+    test {
+      bool: "pass";
     }
+  }
 });
 
 
 .if(1 gt 2, {
-    .then(){
-        test {
-            gt: "fail";
-        }
+  .then(){
+    test {
+      gt: "fail";
     }
-    .else () {
-        test {
-            gt: "pass";
-        }
+  }
+  .else () {
+    test {
+      gt: "pass";
+    }
 
-    }
+  }
 });
 
 .if(1 lte 2, {
-    .then(){
-        test {
-            lte: "pass";
-        }
+  .then(){
+    test {
+      lte: "pass";
     }
-    .else(){
-        test {
-            lte: "fail";
-        }
+  }
+  .else(){
+    test {
+      lte: "fail";
     }
+  }
 });
 
 .if(lightness(#fff) gt (20% * 2), {
-    .then(){
-        test {
-            gt: "pass";
-        }
+  .then(){
+    test {
+      gt: "pass";
     }
-    .else(){
-        test {
-            gt: "fail";
-        }
+  }
+  .else(){
+    test {
+      gt: "fail";
     }
+  }
 });
 
 .if(1 neq 2, {
-    .then(){
-        test {
-            neq: "pass";
-        }
+  .then(){
+    test {
+      neq: "pass";
     }
-    .else(){
-        test {
-            neq: "fail";
-        }
+  }
+  .else(){
+    test {
+      neq: "fail";
     }
+  }
 });
