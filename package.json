@@ -1,6 +1,6 @@
 {
   "name": "homeless",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "helpers for \"Less\" (fortunate) developers",
   "main": "Gruntfile.js",
   "scripts": {
