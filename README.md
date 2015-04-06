@@ -53,22 +53,20 @@ deeply inspired by [more-or-less](https://github.com/pixelass/more-or-less)
 ### join
 
 ```
-&{
-  @list: a, b, c, d, e, f, g;
-  .join(@list);
+@letters: a, b, c, d, e, f, g;
+.join(@letters, {
   .test {
     test: @return;
   }
-}
+});
 ```
 
 ### repeat
 
 ```
-&{
-  .repeat('.test', ' ', 3);
-  .test {
-    test: @return;
+.repeat('div', ' > ', 3, {
+  @{return} {
+    /**/
   }
-}
+});
 ```
