@@ -1,15 +1,24 @@
 @import 'repeat';
 
-&{
-  .repeat('.test', ' ', 3);
+.repeat('a', 20, {
   .test {
     test: @return;
   }
-}
-
-&{
-  .repeat('.test', ' + ', 8);
-  @{return} {
-    test: 'test';
+});
+.repeat('b', 0, {
+  .test {
+    test: @return;
   }
-}
+});
+
+.repeat('div', ' > ', 3, {
+  @{return} {
+    /**/
+  }
+});
+
+.repeat('.test', ' + ', 8, {
+  @{return} {
+    /**/
+  }
+});

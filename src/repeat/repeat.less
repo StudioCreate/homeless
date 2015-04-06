@@ -6,19 +6,17 @@
 /// @argument {Number} @n       number of repeats
 
 .repeat(...) {}
-.repeat(@string, @n) {
-  .repeat(@string, '', @n);
+.repeat(@string, @n, @callback) {
+  .repeat(@string, '', @n, @callback);
 }
-.repeat(@string, @glue, @n) {
-    .repeat(@string, @add, @glue, @n) when (@n > 0) {
-        .return(@result, @nn) when (@nn = 1) {
-          @return: e('@{result}');
-        }
-        .return(@string, @n);
-        .repeat('@{string}@{glue}@{add}', @add, @glue, @n - 1);
+.repeat(@string, @glue, @n, @callback) {
+  .repeat(@string, @add, @glue, @n, @callback) when (@n > 0) {
+    .return(@return, @n) when (@n = 1) {
+      @callback();
     }
-    .repeat(@string, @string, @glue, @n);
+    .return(e(@string), @n);
+    .repeat('@{string}@{glue}@{add}', @add, @glue, @n - 1, @callback);
+  }
+  .repeat(@string, @string, @glue, @n, @callback);
 }
-.repeat(@string, @glue, @n) when (@n < 1) {
-  @return: e('');
-}
+.repeat(@string, @glue, @n, @callback) when (@n < 1) {}

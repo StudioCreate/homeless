@@ -109,24 +109,26 @@
 /// @name join
 /// @description
 ///   repeat a string with an optional glue
-/// @argument {String} @list  the list to join
-/// @argument {String} @glue  string to use as a glue (optional)
+/// @argument {String} @list      the list to join
+/// @argument {String} @glue      string to use as a glue (optional)
+/// @argument {Rule}   @callback  Calls the content of the loop
 
 .join(...) {}
-.join(@list) {
-  .join(@list, '');
+.join(@list, @callback) {
+  .join(@list, '', @callback);
 }
-.join(@list, @glue) {
-  .join(@string, @list, @glue, @n) when (@n >= 0) {
-    .-return(@result, @n2) when (@n2 = 0) {
-      @return: ~'@{result}';
+.join(@list, @glue, @callback) {
+  .join(@string, @list, @glue, @n, @callback) when (@n >= 0) {
+    .return(@return, @n) when (@n = 0) {
+      @callback();
     }
-    .-return(@string, @n);
+    .return(e(@string), @n);
     @add: extract(@list, @n);
-    .join('@{add}@{glue}@{string}', @list, @glue, (@n - 1));
+    .join('@{add}@{glue}@{string}', @list, @glue, (@n - 1), @callback);
+
   }
-  @last: extract(@list, length(@list));
-  .join(@last, @list, @glue, (length(@list) - 1));
+  @string: extract(@list, length(@list));
+  .join(@string, @list, @glue, (length(@list) - 1), @callback);
 }
 /// @name repeat
 /// @description
@@ -136,19 +138,17 @@
 /// @argument {Number} @n       number of repeats
 
 .repeat(...) {}
-.repeat(@string, @n) {
-  .repeat(@string, '', @n);
+.repeat(@string, @n, @callback) {
+  .repeat(@string, '', @n, @callback);
 }
-.repeat(@string, @glue, @n) {
-    .repeat(@string, @add, @glue, @n) when (@n > 0) {
-        .return(@result, @nn) when (@nn = 1) {
-          @return: e('@{result}');
-        }
-        .return(@string, @n);
-        .repeat('@{string}@{glue}@{add}', @add, @glue, @n - 1);
+.repeat(@string, @glue, @n, @callback) {
+  .repeat(@string, @add, @glue, @n, @callback) when (@n > 0) {
+    .return(@return, @n) when (@n = 1) {
+      @callback();
     }
-    .repeat(@string, @string, @glue, @n);
+    .return(e(@string), @n);
+    .repeat('@{string}@{glue}@{add}', @add, @glue, @n - 1, @callback);
+  }
+  .repeat(@string, @string, @glue, @n, @callback);
 }
-.repeat(@string, @glue, @n) when (@n < 1) {
-  @return: e('');
-}
+.repeat(@string, @glue, @n, @callback) when (@n < 1) {}
