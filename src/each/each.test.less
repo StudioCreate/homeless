@@ -14,3 +14,10 @@
     fruit: @fruit;
   }
 }});
+
+@animals: 'dog', 'cat', 'rabbit';
+.each(@animals, {.callback(@animal) {
+  .@{animal} {
+    animal: @animal;
+  }
+}});
