@@ -13,9 +13,10 @@ deeply inspired by [more-or-less](https://github.com/pixelass/more-or-less)
 ```
 @list: 'a', 'b', 'c';
 
-.each(@list, {.callback(@item) {
+.each(@list, {.callback(@item, @index) {
   .@{item} {
     item: @item;
+    index: @index;
   }
 }});
 ```
