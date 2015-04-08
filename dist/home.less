@@ -10,7 +10,7 @@
   }
   .return(@i, @callback) {
     @callback();
-    .callback(extract(@list, @i));
+    .callback(extract(@list, @i), @i);
   }
   .return(length(@list), @callback);
 }
