@@ -51,6 +51,17 @@ deeply inspired by [more-or-less](https://github.com/pixelass/more-or-less)
 });
 ```
 
+### index
+
+```
+@fruits: apple, banana, orange;
+
+.test {
+  .index(@fruits, apple);
+  apple: @return;
+}
+```
+
 ### join
 
 ```
