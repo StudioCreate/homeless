@@ -21,6 +21,11 @@ module.exports = function (grunt) {
       src: ['**/*.js', '**/*.json', '!node_modules/**/*.js', '!node_modules/**/*.json']
     },
     concat: {
+      options: {
+        process: function(src, filepath) {
+          return src.replace(/(^|\n)[ \t]*(@import\s+'.*'|@import\s+".*");?\s*/g, '\n$1');
+        },
+      },
       dist: {
         src: ['src/*/*.less','!src/*/*.test.less'],
         dest: 'dist/home.less'
@@ -41,6 +46,7 @@ module.exports = function (grunt) {
           'tmp/test/for.test.css': 'src/for/for.test.less',
           'tmp/test/each.test.css': 'src/each/each.test.less',
           'tmp/test/if.test.css': 'src/if/if.test.less',
+          'tmp/test/index.test.css': 'src/index/index.test.less',
           'tmp/test/repeat.test.css': 'src/repeat/repeat.test.less',
           'tmp/test/join.test.css': 'src/join/join.test.less',
         }

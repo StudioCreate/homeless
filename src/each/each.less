@@ -9,11 +9,7 @@
     .return((@i - 1), @callback)
   }
   .return(@i, @callback) {
-    .callback(...) when (default()) {
-    /**
-     * @warn please define two arguments (@item, @index)
-     */
-   };
+    .callback(...) when (default()) {};
    @callback();
     .callback(extract(@list, @i), @i);
   }

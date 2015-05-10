@@ -9,11 +9,7 @@
     .return((@i - 1), @callback)
   }
   .return(@i, @callback) {
-    .callback(...) when (default()) {
-    /**
-     * @warn please define two arguments (@item, @index)
-     */
-   };
+    .callback(...) when (default()) {};
    @callback();
     .callback(extract(@list, @i), @i);
   }
@@ -111,6 +107,25 @@
   }
   .return(@operator);
 }
+
+/// @name index
+/// @description
+///   find index of keyword
+/// @argument {Array}    @list     List to iterate
+/// @argument {Keyword}  @keyword  Keyword to find
+
+.index(@list, @keyword) {
+ .fallback() {
+    @return: -1;
+  }
+  .each(@list, {
+    .callback(~'@{keyword}',@index) {
+      @return: @index;
+    }
+  });
+  .fallback;
+}
+
 /// @name join
 /// @description
 ///   repeat a string with an optional glue
